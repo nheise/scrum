@@ -20,7 +20,9 @@ public class DeveloperScheduleBuilder {
 	private List<Story> stories = new ArrayList<>();
 
 	public DeveloperScheduleBuilder tryToAddStory(Story newStory) throws UnableToAddStoryException {
-		if (countStoryPoints() + newStory.getStoryPoints() > MAX_STORY_POINTS_PER_DEVELOPER) {
+		int newStoryPointMax = countStoryPoints() + newStory.getStoryPoints();
+
+		if (newStoryPointMax > MAX_STORY_POINTS_PER_DEVELOPER) {
 			throw new UnableToAddStoryException();
 		}
 		stories.add(newStory);
