@@ -14,8 +14,6 @@ public class ScheduleBuilder {
 
 	private List<WeekScheduleBuilder> weekScheduleBuilders = new ArrayList<>();
 
-	private WeekScheduleBuilder actualWeekScheduleBuilder;
-
 	public ScheduleBuilder(List<Developer> developers) {
 		this.developers = developers;
 		introduceNewWeekScheduleBuilder();
@@ -31,18 +29,19 @@ public class ScheduleBuilder {
 	}
 
 	public ScheduleBuilder addStory(Story story) {
-		try {
-			actualWeekScheduleBuilder.tryToAddStory(story);
-		} catch (UnableToAddStoryException e) {
-			introduceNewWeekScheduleBuilder();
-			addStory(story);
+		for (WeekScheduleBuilder weekScheduleBuilder : weekScheduleBuilders) {
+			try {
+				weekScheduleBuilder.tryToAddStory(story);
+				return this;
+			} catch (UnableToAddStoryException e) {
+			}
 		}
-		return this;
+		introduceNewWeekScheduleBuilder();
+		return addStory(story);
 	}
 
 	private void introduceNewWeekScheduleBuilder() {
-		actualWeekScheduleBuilder = WeekScheduleBuilder.create(developers);
-		weekScheduleBuilders.add(actualWeekScheduleBuilder);
+		weekScheduleBuilders.add(WeekScheduleBuilder.create(developers));
 	}
 
 	private List<WeekSchedule> buildWeekSchedules() {

@@ -52,4 +52,24 @@ class ScheduleBuilderTest {
 		assertThat(weekSchedules.get(1).getDeveloperSchedules().get(1).getStories().size(), is(0));
 	}
 
+	@Test
+	void fillInSmallShouldBeTryedFromTheBegining() {
+
+		List<Story> stories = createStoriesWithPoints(5, 6, 6, 1);
+
+		ScheduleBuilder builder = ScheduleBuilder.create(developers).addStories(stories);
+
+		Schedule schedule = builder.build();
+
+		List<WeekSchedule> weekSchedules = schedule.getWeekSchedules();
+
+		assertThat(weekSchedules.size(), is(2));
+		assertThat(weekSchedules.get(0).getDeveloperSchedules().size(), is(2));
+		assertThat(weekSchedules.get(0).getDeveloperSchedules().get(0).getStories().size(), is(2));
+		assertThat(weekSchedules.get(0).getDeveloperSchedules().get(1).getStories().size(), is(1));
+		assertThat(weekSchedules.get(1).getDeveloperSchedules().size(), is(2));
+		assertThat(weekSchedules.get(1).getDeveloperSchedules().get(0).getStories().size(), is(1));
+		assertThat(weekSchedules.get(1).getDeveloperSchedules().get(1).getStories().size(), is(0));
+	}
+
 }
