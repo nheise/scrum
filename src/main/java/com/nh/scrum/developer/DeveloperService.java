@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class DeveloperService {
 
 	@Autowired
-	private DeveloperRepository developerRepository;
+	private DeveloperRepositoryInMem developerRepository;
 
 	public Developer save(Developer developer) {
 		return developerRepository.save(developer);

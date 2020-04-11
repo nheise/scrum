@@ -11,7 +11,7 @@ import com.nh.scrum.issue.Story;
 
 class DeveloperScheduleBuilderTest {
 
-	private Developer developer = new Developer("tester");
+	private Developer developer = new Developer(1L, "tester");
 
 	@Test
 	void smallStoryShouldBeAdded() {

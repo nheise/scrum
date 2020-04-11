@@ -1,9 +1,6 @@
 package com.nh.scrum.developer;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import org.springframework.lang.Nullable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,10 +11,11 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Developer extends AbstractPersistable<Long> {
+public class Developer {
 
-	@Column
+	@Nullable
+	private Long id = null;
+
 	private String name;
 
 }
