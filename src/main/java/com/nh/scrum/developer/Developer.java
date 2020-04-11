@@ -1,21 +1,20 @@
 package com.nh.scrum.developer;
 
-import org.springframework.lang.Nullable;
-
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
 public class Developer {
 
-	@Nullable
 	private Long id = null;
 
+	@NonNull
 	private String name;
 
 }

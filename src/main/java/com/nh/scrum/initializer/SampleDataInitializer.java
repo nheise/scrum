@@ -16,8 +16,8 @@ public class SampleDataInitializer {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void initialize() {
-		developerService.save(new Developer(null, "John"));
-		developerService.save(new Developer(null, "Frank"));
+		developerService.save(new Developer("John"));
+		developerService.save(new Developer("Frank"));
 	}
 
 }
