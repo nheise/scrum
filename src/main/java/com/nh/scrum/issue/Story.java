@@ -3,6 +3,7 @@ package com.nh.scrum.issue;
 import java.util.Date;
 
 import com.nh.scrum.developer.Developer;
+import com.nh.scrum.repository.HasLongId;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,9 +15,11 @@ import lombok.RequiredArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Story {
+public class Story implements HasLongId {
 
-	enum Status {
+	private Long id = null;
+
+	public enum Status {
 		NEW, ESTIMATED, COMPLETED
 	}
 

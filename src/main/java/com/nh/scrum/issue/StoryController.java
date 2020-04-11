@@ -1,4 +1,4 @@
-package com.nh.scrum.developer;
+package com.nh.scrum.issue;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,32 +15,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/developers")
-public class DeveloperController {
+@RequestMapping("/stories")
+public class StoryController {
 
 	@Autowired
-	private DeveloperService developerService;
+	private StoryService storyService;
 
 	@PostMapping
-	public ResponseEntity<Developer> create(@RequestBody Developer developer) {
-		return ResponseEntity.ok(developerService.save(developer));
+	public ResponseEntity<Story> create(@RequestBody Story story) {
+		return ResponseEntity.ok(storyService.save(story));
 	}
 
 	@PutMapping
-	public ResponseEntity<Developer> update(@RequestBody Developer developer) {
-		return ResponseEntity.ok(developerService.save(developer));
+	public ResponseEntity<Story> update(@RequestBody Story story) {
+		return ResponseEntity.ok(storyService.save(story));
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Developer>> list() {
-		return ResponseEntity.ok(developerService.findAll());
+	public ResponseEntity<List<Story>> list() {
+		return ResponseEntity.ok(storyService.findAll());
 	}
 
 	@DeleteMapping("{id}")
-	public ResponseEntity<Developer> delete(@PathVariable("id") Long id) {
-		Optional<Developer> developer = developerService.findById(id);
-		if (developer.isPresent()) {
-			developerService.remove(developer.get());
+	public ResponseEntity<Story> delete(@PathVariable("id") Long id) {
+		Optional<Story> story = storyService.findById(id);
+		if (story.isPresent()) {
+			storyService.remove(story.get());
 			return ResponseEntity.ok().build();
 		} else {
 			return ResponseEntity.notFound().build();

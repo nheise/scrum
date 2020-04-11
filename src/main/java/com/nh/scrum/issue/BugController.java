@@ -1,4 +1,4 @@
-package com.nh.scrum.developer;
+package com.nh.scrum.issue;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,32 +15,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/developers")
-public class DeveloperController {
+@RequestMapping("/bugs")
+public class BugController {
 
 	@Autowired
-	private DeveloperService developerService;
+	private BugService bugService;
 
 	@PostMapping
-	public ResponseEntity<Developer> create(@RequestBody Developer developer) {
-		return ResponseEntity.ok(developerService.save(developer));
+	public ResponseEntity<Bug> create(@RequestBody Bug bug) {
+		return ResponseEntity.ok(bugService.save(bug));
 	}
 
 	@PutMapping
-	public ResponseEntity<Developer> update(@RequestBody Developer developer) {
-		return ResponseEntity.ok(developerService.save(developer));
+	public ResponseEntity<Bug> update(@RequestBody Bug bug) {
+		return ResponseEntity.ok(bugService.save(bug));
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Developer>> list() {
-		return ResponseEntity.ok(developerService.findAll());
+	public ResponseEntity<List<Bug>> list() {
+		return ResponseEntity.ok(bugService.findAll());
 	}
 
 	@DeleteMapping("{id}")
-	public ResponseEntity<Developer> delete(@PathVariable("id") Long id) {
-		Optional<Developer> developer = developerService.findById(id);
-		if (developer.isPresent()) {
-			developerService.remove(developer.get());
+	public ResponseEntity<Bug> delete(@PathVariable("id") Long id) {
+		Optional<Bug> bug = bugService.findById(id);
+		if (bug.isPresent()) {
+			bugService.remove(bug.get());
 			return ResponseEntity.ok().build();
 		} else {
 			return ResponseEntity.notFound().build();

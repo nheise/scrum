@@ -1,4 +1,4 @@
-package com.nh.scrum.developer;
+package com.nh.scrum.schedule;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,32 +15,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/developers")
-public class DeveloperController {
+@RequestMapping("/schedules")
+public class ScheduleController {
 
 	@Autowired
-	private DeveloperService developerService;
+	private ScheduleService scheduleService;
 
 	@PostMapping
-	public ResponseEntity<Developer> create(@RequestBody Developer developer) {
-		return ResponseEntity.ok(developerService.save(developer));
+	public ResponseEntity<Schedule> create(@RequestBody Schedule schedule) {
+		return ResponseEntity.ok(scheduleService.save(schedule));
 	}
 
 	@PutMapping
-	public ResponseEntity<Developer> update(@RequestBody Developer developer) {
-		return ResponseEntity.ok(developerService.save(developer));
+	public ResponseEntity<Schedule> update(@RequestBody Schedule schedule) {
+		return ResponseEntity.ok(scheduleService.save(schedule));
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Developer>> list() {
-		return ResponseEntity.ok(developerService.findAll());
+	public ResponseEntity<List<Schedule>> list() {
+		return ResponseEntity.ok(scheduleService.findAll());
+	}
+
+	@GetMapping("{id}")
+	public ResponseEntity<Schedule> get() {
+		return ResponseEntity.ok(scheduleService.findAll().get(0));
 	}
 
 	@DeleteMapping("{id}")
-	public ResponseEntity<Developer> delete(@PathVariable("id") Long id) {
-		Optional<Developer> developer = developerService.findById(id);
-		if (developer.isPresent()) {
-			developerService.remove(developer.get());
+	public ResponseEntity<Schedule> delete(@PathVariable("id") Long id) {
+		Optional<Schedule> schedule = scheduleService.findById(id);
+		if (schedule.isPresent()) {
+			scheduleService.remove(schedule.get());
 			return ResponseEntity.ok().build();
 		} else {
 			return ResponseEntity.notFound().build();

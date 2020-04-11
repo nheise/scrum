@@ -3,6 +3,7 @@ package com.nh.scrum.issue;
 import java.util.Date;
 
 import com.nh.scrum.developer.Developer;
+import com.nh.scrum.repository.HasLongId;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +14,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Bug {
+public class Bug implements HasLongId {
+
+	private Long id = null;
 
 	enum Priority {
 		CRITICAL, MAJOR, MINOR
