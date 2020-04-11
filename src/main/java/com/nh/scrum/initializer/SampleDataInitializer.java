@@ -26,11 +26,11 @@ public class SampleDataInitializer {
 	}
 
 	public static List<Story> createStoriesWithPoints(Integer... storyPoints) {
-		return asList(storyPoints).stream().map((points) -> new Story(points)).collect(toList());
+		return asList(storyPoints).stream().map(points -> new Story(points)).collect(toList());
 	}
 
 	public static List<Developer> createDevelopers(String... names) {
-		return asList(names).stream().map((name) -> new Developer(name)).collect(toList());
+		return asList(names).stream().map(name -> new Developer(name)).collect(toList());
 	}
 
 }
