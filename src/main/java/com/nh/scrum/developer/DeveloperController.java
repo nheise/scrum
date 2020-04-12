@@ -26,8 +26,8 @@ public class DeveloperController {
 		return ResponseEntity.ok(developerService.save(developer));
 	}
 
-	@PutMapping
-	public ResponseEntity<Developer> update(@RequestBody Developer developer) {
+	@PutMapping("{id}")
+	public ResponseEntity<Developer> update(@PathVariable("id") Long id, @RequestBody Developer developer) {
 		return ResponseEntity.ok(developerService.save(developer));
 	}
 

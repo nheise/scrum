@@ -53,7 +53,7 @@ class ScheduleBuilderTest {
 	}
 
 	@Test
-	void fillInSmallShouldBeTryedFromTheBegining() {
+	void fillInSmallStoriesShouldBeTryedInEarlierWeeks() {
 
 		List<Story> stories = createStoriesWithPoints(5, 6, 6, 1);
 

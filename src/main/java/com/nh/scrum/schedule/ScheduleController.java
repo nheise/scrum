@@ -26,8 +26,8 @@ public class ScheduleController {
 		return ResponseEntity.ok(scheduleService.save(schedule));
 	}
 
-	@PutMapping
-	public ResponseEntity<Schedule> update(@RequestBody Schedule schedule) {
+	@PutMapping("{id}")
+	public ResponseEntity<Schedule> update(@PathVariable("id") Long id, @RequestBody Schedule schedule) {
 		return ResponseEntity.ok(scheduleService.save(schedule));
 	}
 

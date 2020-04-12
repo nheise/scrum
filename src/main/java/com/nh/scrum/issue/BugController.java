@@ -26,8 +26,8 @@ public class BugController {
 		return ResponseEntity.ok(bugService.save(bug));
 	}
 
-	@PutMapping
-	public ResponseEntity<Bug> update(@RequestBody Bug bug) {
+	@PutMapping("{id}")
+	public ResponseEntity<Bug> update(@PathVariable("id") Long id, @RequestBody Bug bug) {
 		return ResponseEntity.ok(bugService.save(bug));
 	}
 

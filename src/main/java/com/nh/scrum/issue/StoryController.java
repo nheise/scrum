@@ -26,8 +26,8 @@ public class StoryController {
 		return ResponseEntity.ok(storyService.save(story));
 	}
 
-	@PutMapping
-	public ResponseEntity<Story> update(@RequestBody Story story) {
+	@PutMapping("{id}")
+	public ResponseEntity<Story> update(@PathVariable("id") Long id, @RequestBody Story story) {
 		return ResponseEntity.ok(storyService.save(story));
 	}
 
