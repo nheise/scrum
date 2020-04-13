@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nh.scrum.repository.InMemoryRepository;
@@ -11,7 +12,8 @@ import com.nh.scrum.repository.InMemoryRepository;
 @Service
 public class BugService {
 
-	private InMemoryRepository<Bug> bugRepository = new InMemoryRepository<>();
+	@Autowired
+	private InMemoryRepository<Bug> bugRepository;
 
 	public Bug save(Bug bug) {
 		return bugRepository.save(bug);

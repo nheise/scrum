@@ -14,7 +14,6 @@ import com.nh.scrum.developer.Developer;
 import com.nh.scrum.developer.DeveloperService;
 import com.nh.scrum.issue.Story;
 import com.nh.scrum.issue.StoryService;
-import com.nh.scrum.schedule.ScheduleService;
 
 @Component
 public class SampleDataInitializer {
@@ -24,9 +23,6 @@ public class SampleDataInitializer {
 
 	@Autowired
 	private StoryService storyService;
-
-	@Autowired
-	private ScheduleService scheduleService;
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void initialize() {
@@ -43,8 +39,6 @@ public class SampleDataInitializer {
 		story = createStory("story 4", "story 4", 10);
 		story.setStatus(Story.Status.ESTIMATED);
 		storyService.save(story);
-
-		scheduleService.reSchedule();
 
 	}
 
